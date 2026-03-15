@@ -18,13 +18,21 @@ st.set_page_config(
 # ---------------------------------------------------------
 # Load Models
 # ---------------------------------------------------------
-BASE_DIR = Path(__file__).resolve().parent
+import os
+import joblib
+import streamlit as st
 
-reg_path = BASE_DIR / "Models" / "regression_model.pkl"
-clf_path = BASE_DIR / "Models" / "classification_model.pkl"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+reg_path = os.path.join(BASE_DIR, "Models", "regression_model.pkl")
+clf_path = os.path.join(BASE_DIR, "Models", "classification_model.pkl")
 
-
+@st.cache_resource
 def load_models():
+    if not os.path.exists(reg_path):
+        st.error(f"Regression model not found at: {reg_path}")
+    if not os.path.exists(clf_path):
+        st.error(f"Classification model not found at: {clf_path}")
+
     regression_model = joblib.load(reg_path)
     classification_model = joblib.load(clf_path)
     return regression_model, classification_model
