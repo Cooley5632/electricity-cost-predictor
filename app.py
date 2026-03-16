@@ -94,7 +94,7 @@ st.session_state.last_inputs = current_inputs
 st.divider()
 st.subheader("🔄 Update Prediction")
 
-if st.button("Calculate Weighted Score"):
+if st.button("Electricity Cost"):
     weighted_sum = sum(df[col].iloc[0] * weights[col] for col in feature_names)
     st.session_state.prediction = weighted_sum
 
