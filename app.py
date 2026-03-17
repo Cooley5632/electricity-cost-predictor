@@ -129,40 +129,6 @@ else:
 st.subheader("📊 Cost Category")
 st.text_input("Category", value=classification if classification else "—")
 
-# ---------------------------------------------------------
-# Weighted Feature Bar Chart
-# ---------------------------------------------------------
-st.divider()
-st.subheader("📊 Feature Contribution (Weighted Values)")
-
-weighted_values = {f: df[f].iloc[0] * weights[f] for f in feature_names}
-w_df = pd.DataFrame({
-    "Feature": list(weighted_values.keys()),
-    "Weighted Value": list(weighted_values.values())
-})
-
-fig1, ax1 = plt.subplots(figsize=(8, 4))
-ax1.bar(w_df["Feature"], w_df["Weighted Value"], color="skyblue")
-ax1.set_title("Weighted Feature Contributions")
-ax1.set_ylabel("Weighted Value")
-ax1.set_xticklabels(w_df["Feature"], rotation=45, ha="right")
-
-st.pyplot(fig1)
-
-# ---------------------------------------------------------
-# Classification Chart
-# ---------------------------------------------------------
-st.subheader("📊 Electricity Cost Classification Chart")
-
-bins = ["Low", "Medium", "High"]
-values = [1 if classification == b else 0 for b in bins]
-
-fig2, ax2 = plt.subplots(figsize=(6, 3))
-bars = ax2.bar(bins, values, color=["green" if b == classification else "gray" for b in bins])
-ax2.set_ylim(0, 1)
-ax2.set_title("Cost Category Highlight")
-
-st.pyplot(fig2)
 
 # ---------------------------------------------------------
 # Input Summary
