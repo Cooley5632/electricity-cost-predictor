@@ -123,7 +123,6 @@ else:
 st.subheader("📊 Cost Category")
 st.text_input("Category", value=classification if classification else "—")
 
-
 # ---------------------------------------------------------
 # Input Summary
 # ---------------------------------------------------------
