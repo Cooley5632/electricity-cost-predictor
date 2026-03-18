@@ -78,13 +78,7 @@ if "last_inputs" not in st.session_state:
 # Reset prediction + classification when sliders change
 # ---------------------------------------------------------
 current_inputs = tuple(X[0])
-
-if st.session_state.last_inputs != current_inputs:
-    st.session_state.prediction = None
-    st.session_state.classification = None
-
 st.session_state.last_inputs = current_inputs
-
 # ---------------------------------------------------------
 # Prediction Button
 # ---------------------------------------------------------
