@@ -60,6 +60,7 @@ st.title("⚡ Electricity Cost Prediction Dashboard")
 
 st.markdown("""
 This dashboard calculates **Electricity Cost** based on key input features.
+Click "Electricity Cost" button prior to clicking "Classify Electricity Cost" button.
 """)
 
 # ---------------------------------------------------------
